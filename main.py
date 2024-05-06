@@ -28,8 +28,6 @@ class PostureApp(tk.Tk):
         self.geometry("1024x600")
         self.resizable(False, False)
         self.title("Posture Correction Application")
-        self.icon_path = "C:/Users/Will/Desktop/Python/PC/App v6/app.ico"
-        self.iconbitmap(self.icon_path)
         self.last_notification = None
 
         self.init_ui()
