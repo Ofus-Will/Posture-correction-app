@@ -37,15 +37,17 @@ class MonitoringPage(ttk.Frame):
         self.grid_rowconfigure(1, weight=0)
         self.grid_columnconfigure(1, weight=1)
 
-        self.lbl_status = ttk.Label(data_container, text="Status: Inactive", style='Custom.TLabel')
-        self.lbl_duration = ttk.Label(data_container, text="Duration: 00:00", style='Custom.TLabel')
-        self.lbl_posture = ttk.Label(data_container, text="Posture: ...", style='Custom.TLabel')
+        self.lbl_status = ttk.Label(data_container, text="Status: Inactive")
+        self.lbl_duration = ttk.Label(data_container, text="Duration: 00:00")
+        self.lbl_posture = ttk.Label(data_container, text="Posture: ...")
         self.btn_monitor = ttk.Button(data_container, text="Start Monitoring", padding=(25, 10), command= lambda: self.app.toggle_monitoring())
+        self.lbl_warning = ttk.Label(data_container, text="\n\nPlease ensure your heand\nand torso are fully visible\nin the camera view\nto the left", justify=tk.CENTER)
 
         self.lbl_status.grid(row=0, column=0, padx=10, pady=5)
         self.lbl_duration.grid(row=1, column=0, padx=10, pady=5)
         self.lbl_posture.grid(row=2, column=0, padx=10, pady=5)
         self.btn_monitor.grid(row=3, column=0, padx=10, pady=10)
+        self.lbl_warning.grid(row=4, column=0)
 
         data_container.grid_columnconfigure(0, weight=1)
         data_container.grid_columnconfigure(1, weight=1)
