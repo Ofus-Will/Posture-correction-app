@@ -93,7 +93,7 @@ class PostureApp(tk.Tk):
     # either custom notification widget or use a framework to send a windows notification
     def show_notification(self, text, windows=False, temporary=False, background="#d64541"):
         if windows:
-            if self.last_notification is None or (datetime.now() - self.last_notification).seconds > 5:
+            if self.last_notification is None or (datetime.now() - self.last_notification).seconds > 10:
                 self.last_notification = datetime.now()
                 title, msg = text.split("-")
                 notification = WinNotification(app_id="Posture Correction", icon=self.icon_path, title=title, msg=msg, duration="short")

@@ -3,7 +3,7 @@ from Pages.monitoring import MonitoringPage
 
 class PostureClassifier():
 
-    def __init__(self, app, buffer_size = 10, visibility_threshold = 0.9, distance_limit=0.20) -> None:
+    def __init__(self, app, buffer_size = 5, visibility_threshold = 0.9, distance_limit=0.20) -> None:
         self.app = app
         self.classification = ""
         self.distance_limit = distance_limit
@@ -30,8 +30,8 @@ class PostureClassifier():
                 self.consecutive_bad_frames += 1
                 if self.consecutive_bad_frames >= self.buffer_size:
                     self.classification = "Bad"
+                    self.notify_user()
 
-            self.notify_user()
             self.app.session_handler.update_frame_count(self.classification)
         else:
             self.app.show_notification("We can not find you in your camera!")
@@ -61,10 +61,9 @@ class PostureClassifier():
             if isinstance(self.app.current_page, MonitoringPage) and self.app.state() != "iconic":
                 self.app.current_page.update_ui()
 
-            self.app.after(50, self.classify_posture)
+            self.app.after(200, self.classify_posture)
 
     # method for notifying the user when their posture is bad, called in update_classification method
     def notify_user(self):
-        if self.classification == "Bad":
-            if self.app.settings_handler.get_setting("alert_mode") == "Notification":
-                self.app.show_notification(text="Bad Posture Detected - Adjust your posture!", windows=True)
+        if self.app.settings_handler.get_setting("alert_mode") == "Notification":
+            self.app.show_notification(text="Bad Posture Detected - Adjust your posture!", windows=True)

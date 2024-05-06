@@ -66,15 +66,25 @@ class ActivityPage(ttk.Frame):
             ax.set_facecolor(theme["background-2"])
             fig.patch.set_facecolor(theme["background-2"])
 
+            # Annotating each point with its value
+            for i, txt in enumerate(good_percentage):
+                ax.annotate(f'{txt:.1f}%', (session_indexes[i], 
+                                            good_percentage[i]), 
+                                            textcoords="offset points", 
+                                            xytext=(0,-2), ha='center', 
+                                            color="white",
+                                            bbox=dict(boxstyle="round,pad=0.3", facecolor=theme["foreground"], edgecolor='none', alpha=0.4))
+
             canvas = FigureCanvasTkAgg(fig, master=self.frame_summary)
             canvas.draw()
             canvas.get_tk_widget().pack(fill=tk.BOTH)
 
             plt.close(fig)
-        
+            
         else:
 
             ttk.Label(self.frame_summary, text="No session data found, go to monitoring!", style="Secondary.TLabel").pack(pady=20)
+
 
     # grab and format the session data in the way the graph expects it (session indexes, good posture percentage)
     def get_graph_data(self) -> Tuple[List[str], List[float]]:
@@ -82,7 +92,7 @@ class ActivityPage(ttk.Frame):
         good_percentage = []
 
         for index, session in enumerate(self.sessions):
-            session_indexes.append(str(index))
+            session_indexes.append(str(index + 1))
             if session["good_frame_count"] + session["bad_frame_count"] > 0:  # Prevent division by zero
                 percentage = 100 * (session["good_frame_count"] / (session["good_frame_count"] + session["bad_frame_count"]))
             else:

@@ -20,15 +20,36 @@ class CalibrationPage(ttk.Frame):
                  "and in your environment."
             ]),
             TextSubPage(self, app, "Tips", 1).add_text([
-                "It is important you know what is meant by good posture", 
-                "Make sure the top of your computer screen is your eye level",
-                "If using a laptop, a stand and separate keyboard and mouse will help a lot",
-                "Sit with your hips in the back of your chair and keep your pelvis neutral to avoid rounding of the spine",
-                "Keep your shoulders relaxed and done and make sure you are comfortable"
+                "What is meant by good posture:", 
+                "- The top of your monitor should be roughly inline with your eyes",
+                "- If using a laptop consider buying a stand, keyboard, and mouse",
+                "- Make sure your hips are in the back of your chair and keep your pelvis in a neutral position",
+                "- Ensure your spine is straight while remaining in a comfortable position",
+                "- Keep your shoulders relaxed"
             ]),
 
-            GoodPostureSubPage(self, app, "Good Posture", 2).add_text(["This is longer test text", "On to a second line that is longer", "And short"]),
-            BadPostureSubPage(self, app, "Bad Posture", 3).add_text(["This is longer test text", "On to a second line that is longer", "And short"]),
+            GoodPostureSubPage(self, app, "Good Posture", 2).add_text([
+                "Here you will capture good posture data",
+                "Follow the tips on the previous page",
+                "",
+                "Click the 'Capture good posture data'",
+                "button when you're ready",
+                "",
+                "You can also reset all good posture data",
+                "By clicking the reset button",
+                "",
+                "Click 'Continue' to advance to the next page"]),
+            BadPostureSubPage(self, app, "Bad Posture", 3).add_text([
+                "Here you will capture all the bad posture data",
+                "There should ideally be multiple instances",
+                "",
+                "Examples include:",
+                "- Slouching",
+                "- Leaning to the left",
+                "- Leaning to the right",
+                "- Any other bad habits you know you have",
+                "",
+                "Click 'Continue' to advance to the next page"]),
             TextSubPage(self, app, "Finished", 4).add_text([
                 "You're all set! You are now ready", 
                 "To start monitoring your posture."

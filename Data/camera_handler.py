@@ -40,7 +40,7 @@ class CameraHandler():
             self.app.session_handler.start_session()
 
         if recursive and self.subscribed and (bool_camera_view or bool_monitoring):
-            self.app.after(75, self.process_camera)
+            self.app.after(100, self.process_camera)
         else:
             self.subscribed = False
 
