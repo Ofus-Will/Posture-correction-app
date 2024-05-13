@@ -94,7 +94,7 @@ class PostureApp(tk.Tk):
             if self.last_notification is None or (datetime.now() - self.last_notification).seconds > 10:
                 self.last_notification = datetime.now()
                 title, msg = text.split("-")
-                notification = WinNotification(app_id="Posture Correction", icon=self.icon_path, title=title, msg=msg, duration="short")
+                notification = WinNotification(app_id="Posture Correction", title=title, msg=msg, duration="short")
                 notification.show()
         else:
             if hasattr(self, 'notification') and self.notification is not None: # and (self.notification.text != text):
