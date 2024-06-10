@@ -1,4 +1,4 @@
-# PostureCorrectionApp
+# Posture correction app
 
 Requirements:<br/>
 matplotlib==3.8.2<br/>
